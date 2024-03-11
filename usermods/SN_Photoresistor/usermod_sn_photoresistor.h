@@ -3,7 +3,14 @@
 #include "wled.h"
 
 //Pin defaults for QuinLed Dig-Uno (A0)
+//Modified to set a different default on ESP32 units
+#ifndef PHOTORESISTOR_PIN
+#ifdef ESP32
+#define PHOTORESISTOR_PIN 4
+#elif defined (ESP8266)
 #define PHOTORESISTOR_PIN A0
+#endif
+#endif
 
 // the frequency to check photoresistor, 10 seconds
 #ifndef USERMOD_SN_PHOTORESISTOR_MEASUREMENT_INTERVAL
